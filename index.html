@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".submit").click(function(){
+        var searchTerm = document.getElementById("search").value;
+        $.ajax({
+          type: "GET",
+          url: "https://www.nordstromrack.com/api/search2/catalog/search?query=" + searchTerm, 
+          crossDomain: true, 
+          dataType: "application/json", 
+          headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Vary": "Origin"
+          }
+        }).always(function(data){
+          alert(data);
+        });
+    });
+  });
+  </script>
+<style>
+.grid-container {
+    display: grid;
+        grid-template: 150px / auto auto auto;
+            grid-gap: 10px;
+                background-color: #2196F3;
+                    padding: 10px;
+}
+.grid-container>div {
+    background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+            padding:20px 0;
+                font-size: 30px;
+}
+</style>
+  </head>
+  <body>
+
+    <h1>Look Book</h1>
+
+    <input placeholder="Search for a product" id="search"></input>
+    
+    <button type="submit" form="search" value="Submit" class="submit">Submit</button>
+
+    <div class="grid-container">
+        <div class="item1">1</div>
+          <div class="item2">2</div>
+            <div class="item3">3</div>  
+              <div class="item4">4</div>
+                <div class="item5">5</div>
+                  <div class="item6">6</div>
+    </div>
+
+  </body>
+</html>
+
